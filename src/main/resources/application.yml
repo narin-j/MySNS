@@ -1,14 +1,19 @@
-spring.jpa:
-  database: postgresql
-  hibernate.dialect: org.hibernate.dilect.PostgreSQLDialect
-  hibernate.ddl-auto: update
-  properties.hibernate.format_sql: true
-  show-sql: true
+spring:
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
+    username: postgres.fcxseqjooqvxxibrcrnj
+    password: sns123!@#
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none # 기존 테이블 사용 (create/update/drop-auto를 사용하지 않음)
+    show-sql: true # SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true # 출력되는 쿼리 포맷 정리
+        dialect: org.hibernate.dialect.PostgreSQLDialect # PostgreSQL에 맞는 Hibernate 방언 사용
 
-spring.datasource:
-  hikari.maximum-pool-size: 4
-  url:
-  username:
-  password:
-  platform: postgres
-  driver-class-name: org.postgresql.Driver
+
+
+
+

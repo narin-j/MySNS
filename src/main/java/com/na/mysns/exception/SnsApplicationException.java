@@ -11,12 +11,18 @@ public class SnsApplicationException extends RuntimeException {
     private String message;
 
 
-    // alt+ins > override method -> getMassage
+    public SnsApplicationException(ErrorCode errorCode) {
+        this.errorCode = errorCode;
+        this.message = null;
+    }
+
     @Override
     public String getMessage() {
-        if(message == null){
+        if (message == null) {
             return errorCode.getMessage();
+        } else {
+            return String.format("%s. %s", errorCode.getMessage(), message);
         }
-        return String.format("%s. %s", errorCode, getMessage(), message);
+
     }
 }
