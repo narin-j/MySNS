@@ -1,8 +1,10 @@
 package com.na.mysns.controller;
 
 import com.na.mysns.controller.request.UserJoinRequest;
+import com.na.mysns.controller.request.UserLoginRequest;
 import com.na.mysns.controller.response.Response;
 import com.na.mysns.controller.response.UserJoinResponse;
+import com.na.mysns.controller.response.UserLoginResponse;
 import com.na.mysns.model.User;
 import com.na.mysns.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,4 +28,9 @@ public class UserController {
         return Response.success(UserJoinResponse.fromUser(user));
     }
 
+    @PostMapping("/login")
+    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request) {
+        String token = userService.login(request.getUserName(), request.getPassword());
+        return Response.success(new UserLoginResponse(token ));
+    }
 }

@@ -13,7 +13,9 @@ spring:
         format_sql: true # 출력되는 쿼리 포맷 정리
         dialect: org.hibernate.dialect.PostgreSQLDialect # PostgreSQL에 맞는 Hibernate 방언 사용
 
-
+jwt:
+  secret-key: na.sns-application-2025.secret_key
+  token.expired-time-ms: 2592000000
 
 
 
