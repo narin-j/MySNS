@@ -1,6 +1,7 @@
 package com.na.mysns.configuration;
 
 import com.na.mysns.configuration.filter.JwtTokenFilter;
+import com.na.mysns.exception.CustomAuthenticationEntryPoint;
 import com.na.mysns.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,8 +32,8 @@ public class AuthenticationConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilterBefore(new JwtTokenFilter(key, userService), UsernamePasswordAuthenticationFilter.class);
-
-                //.exceptionHandling()
+                .addFilterBefore(new JwtTokenFilter(key, userService), UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling()
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
     }
 }

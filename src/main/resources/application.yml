@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none # 기존 테이블 사용 (create/update/drop-auto를 사용하지 않음)
+      ddl-auto: update # 기존 테이블 사용 (create/update/drop-auto를 사용하지 않음)
     show-sql: true # SQL 쿼리 출력
     properties:
       hibernate:
