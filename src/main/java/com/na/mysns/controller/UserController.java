@@ -8,7 +8,6 @@ import com.na.mysns.controller.response.UserLoginResponse;
 import com.na.mysns.model.User;
 import com.na.mysns.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,7 @@ public class UserController {
 
     @PostMapping(value = "/join")
     public Response<UserJoinResponse> join(@RequestBody UserJoinRequest request) {
-        User user = userService.join(request.getUserName(), request.getPassword());
+        User user = userService.join(request.getName(), request.getPassword());
         // UserJoinResponse response = UserJoinResponse.fromUser(user);
 
         return Response.success(UserJoinResponse.fromUser(user));
@@ -30,7 +29,7 @@ public class UserController {
 
     @PostMapping("/login")
     public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request) {
-        String token = userService.login(request.getUserName(), request.getPassword());
+        String token = userService.login(request.getName(), request.getPassword());
         return Response.success(new UserLoginResponse(token));
     }
 }

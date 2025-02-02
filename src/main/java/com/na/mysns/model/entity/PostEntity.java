@@ -14,7 +14,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name="\"post\"")
-@SQLDelete(sql = "UPDATED \"post\" SET deleted_at = NOW() where id=?")
+@SQLDelete(sql = "UPDATE \"post\" SET deleted_at = NOW() where id=?")
 @Where(clause = "deleted_at is NULL") // 삭제된 애들(삭제시간이 있는)을 제외한 데이터
 public class PostEntity {
     @Id
