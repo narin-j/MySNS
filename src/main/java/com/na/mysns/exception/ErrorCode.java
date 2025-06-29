@@ -14,6 +14,7 @@ public enum ErrorCode {
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "Invalid token"),
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, "Post not found"),
     INVALID_PERMISSION(HttpStatus.FORBIDDEN, "Invalid permission"),
+    ALREADY_LIKED(HttpStatus.CONFLICT, "User already liked post"),
     ;
 
     // 어떤 에러이냐 따라 http status 변경

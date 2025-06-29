@@ -49,4 +49,12 @@ public class PostController {
         // 페이징처리
         return Response.success(postService.my(authentication.getName(), pageable).map(PostResponse::fromPost));
     }
+
+
+    @PostMapping("/{postId}/likes")
+    public Response<Void> like(@PathVariable Integer postId, Authentication authentication) {
+        postService.like(postId, authentication.getName());
+        return Response.success();
+
+    }
 }
